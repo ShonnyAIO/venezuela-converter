@@ -79,7 +79,10 @@ function getExchangeRate() {
         totalExchangeRate = (amountVal * exchangeRate).toFixed(2);
     }
     exchangeRateTxt.innerHTML = `Cambio total: <br/> ${amountVal} ${fromCurrency.value} = <input id='data' type='text' class='results' value='${totalExchangeRate}'> ${toCurrency.value} <button id='copy' class='copy-results'> Copiar resultado</button>`;
-    document.querySelector("#copy").addEventListener("click", copy);
+    document.querySelector("#copy").addEventListener("click", e => {
+        e.preventDefault();
+        copy();
+    });
 
 }
 
