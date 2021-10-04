@@ -80,14 +80,14 @@ function getExchangeRate() {
     }
     exchangeRateTxt.innerHTML = `Cambio total: <br/> ${amountVal} ${fromCurrency.value} = <input id='data' type='text' class='results' value='${totalExchangeRate}'> ${toCurrency.value} <button id='copy' class='copy-results'> Copiar resultado</button>`;
     document.querySelector("#copy").addEventListener("click", e => {
-        copy(e);
+        e.preventDefault();
+        copy();
     });
 
 }
 
-function copy(e) {
-    e.preventDefault();
-    var copyText = document.querySelector("#data");
+function copy() {
+    let copyText = document.querySelector("#data");
     copyText.select();
     document.execCommand("copy");
     let advise = document.querySelector('.copy-results');
