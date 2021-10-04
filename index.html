@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="white" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="images/icon_pwa.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <title>Convertidor de precios BSD a USD APP</title>
+</head>
+
+<body class="fullscreen">
+    <div class="wrapper">
+        <header>Convertidor de precios BSD a USD</header>
+        <div class="precio-bcv"></div>
+        <form action="#">
+            <div class="amount">
+                <p>Ingrese el monto</p>
+                <input type="text" value="1">
+            </div>
+            <div class="drop-list">
+                <div class="from">
+                    <p>De</p>
+                    <div class="select-box">
+                        <img src="https://www.countryflags.io/ve/flat/64.png" alt="flag">
+                        <select>
+                            <option value="BSD">BSD</option>
+                            <option value="USD">USD</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="icon"><i class="fas fa-exchange-alt"></i></div>
+                <div class="to">
+                    <p>Para</p>
+                    <div class="select-box">
+                        <img src="https://www.countryflags.io/us/flat/64.png" alt="flag">
+                        <select>
+                            <option value="USD">USD</option>
+                            <option value="BSD">BSD</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="exchange-rate">Cargando la informacion ...</div>
+            <button class="calculate">Calcular el cambio</button>
+        </form>
+    </div>
+    <script src="js/country-list.js"> </script>
+    <script src="js/script.js"> </script>
+</body>
+
+</html>
