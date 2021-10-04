@@ -62,6 +62,10 @@ function getExchangeRate() {
         amountVal = 1;
     }
 
+    if (amountVal <= -1) {
+        amountVal = amountVal * (-1);
+    }
+
     if (amountVal >= 1000000) {
         amountVal = amountVal / 1000000;
     }
