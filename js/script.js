@@ -1,3 +1,5 @@
+/* Author: Jonathan Torres */
+
 const dropList = document.querySelectorAll('.drop-list select'),
     fromCurrency = document.querySelector('.from select'),
     toCurrency = document.querySelector('.to select'),
@@ -41,13 +43,12 @@ var price_dollar = '';
 function getDollar() {
     let url = `https://dollar-bcv-query.herokuapp.com/dollar-bcv/`;
     fetch(url).then(response => response.json()).then(result => {
-        let exchangeRateTxt = document.querySelector('.exchange-rate');
         let fecha = new Date().toLocaleDateString();
         let precio = Number(result.precio);
         const dollar_html = document.querySelector('.precio-bcv');
         price_dollar = precio;
-        exchangeRateTxt.innerText = "";
-        dollar_html.innerHTML = `Tasa del dia: ${precio.toFixed(4)} BS.D <br/> <span> Fecha: ${fecha} </span>`;
+        getButton.innerText = "Calcular el cambio";
+        dollar_html.innerHTML = `Tasa del dia BCV: ${precio.toFixed(4)} BS.D <br/> <span> Fecha: ${fecha} </span>`;
     }).catch(() => {
         dollar_html.innerHTML = "Algo no esta funcionando";
     });
