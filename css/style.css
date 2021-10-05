@@ -20,10 +20,6 @@ body{
     background: var(--color-default);
 }
 
-.calculate{
-    margin-top: 20px;
-}
-
 .wrapper{
     width: 370px;
     background: #fff;
@@ -47,7 +43,7 @@ body{
 }
 
 .wrapper form{
-    margin: 20px 0 20px 0;
+    margin: 40px 0 20px 0;
 }
 
 form :where(input, select, button){
@@ -127,6 +123,13 @@ form .drop-list{
     margin-top: 30px;
 }
 
+form .exchange-rate{
+    font-size: 19px;
+    font-weight: 500;
+    margin: 20px 0 30px;
+    text-align: center;
+}
+
 form button{
     height: 52px;
     color: #fff;
@@ -146,6 +149,7 @@ form button{
 
     .drop-list .select-box{
         width: 96px;
+
     }
     
 }
