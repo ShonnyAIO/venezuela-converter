@@ -34,8 +34,9 @@ function loadFlag(element) {
     for (code in country_list) {
         if (code == element.value) {
             let imgTag = element.parentElement.querySelector("img");
+            let code = country_list[code].toLowerCase();
             // https://www.worldometers.info/img/flags/${country_list[code]}-flag.gif
-            imgTag.src = `https://www.worldometers.info/img/flags/${country_list[code]}-flag.gif`;
+            imgTag.src = `https://www.worldometers.info/img/flags/${code}-flag.gif`;
         }
     }
 }
