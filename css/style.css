@@ -37,7 +37,7 @@ body {
 .precio-bcv,
 .precio-enparalelo {
     margin-top: 5px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -75,7 +75,6 @@ form input:focus {
 
 .results {
     width: 120px;
-
 }
 
 .copy-results,
@@ -156,7 +155,15 @@ form button {
 
     .drop-list .select-box {
         width: 96px;
+    }
 
+    .precio-bcv,
+    .precio-enparalelo {
+        font-size: 14px;
+    }
+
+    .results {
+        width: 100px;
     }
 
 }
