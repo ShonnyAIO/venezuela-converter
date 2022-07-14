@@ -1,5 +1,5 @@
-let cacheName = "venezuela_converter";
-let filesToCache = ["/", "/index.html", "/css/style.css", "/js/script.js", "/images/icon_pwa.png"];
+let cacheName = "bolivares-divisas-converter";
+let filesToCache = ["/", "/index.html", "/css/style.css", "/js/script.js", "/js/country-list.js", "/images/icon_pwa.png"];
 
 /* Start the service worker and cache all of the app's content */
 self.addEventListener("install", (e) => {
