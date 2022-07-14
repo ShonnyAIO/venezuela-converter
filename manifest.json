@@ -1,6 +1,6 @@
 {
-    "name": "BSD to USD Converter",
-    "short_name": "BSD to USD",
+    "name": "Convertidor de Bolivares a Divisas",
+    "short_name": "BSD to REF Converter",
     "icons": [
         {
             "src": ".images/icon_pwa.png",
