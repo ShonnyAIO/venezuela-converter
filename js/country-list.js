@@ -1,4 +1,4 @@
 let country_list = {
-    "USD": "us",
+    "REF": "us",
     "BSD": "ve",
 }

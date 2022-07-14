@@ -42,22 +42,36 @@ function loadFlag(element) {
 
 var price_dollar = '';
 function getDollar() {
+    const dollar_html = document.querySelector('.precio-bcv');
     let url = `https://dollar-bcv-query.herokuapp.com/dollar-bcv/`;
     fetch(url).then(response => response.json()).then(result => {
         let fecha = new Date().toLocaleDateString();
         let precio = Number(result.precio);
-        const dollar_html = document.querySelector('.precio-bcv');
         price_dollar = precio;
         getButton.innerText = "Calcular el cambio";
-        dollar_html.innerHTML = `Tasa del dia BCV: ${precio.toFixed(4)} BS.D <br/> <span> Fecha: ${fecha} </span>`;
+        dollar_html.innerHTML = `Tasa del dia BCV: ${precio.toFixed(2)} BSD <br/> <span> Fecha: ${fecha} </span>`;
     }).catch(() => {
         dollar_html.innerHTML = "Algo no esta funcionando";
     });
 }
 
+var price_enparalelo = '';
+function getEnparalelo() {
+    const enparalelo_html = document.querySelector('.precio-enparalelo');
+    let url = "https://dollar-bcv-query.herokuapp.com/dollar-paralelo/";
+    fetch(url).then(response => response.json()).then(result => {
+        let precio = Number(result.precio);
+        price_enparalelo = precio;
+        enparalelo_html.innerHTML = `Tasa del dia EnParalelo: ${precio.toFixed(2)} BSD <br/>`;
+    }).catch(() => {
+        enparalelo_html.innerHTML = "Algo no esta funcionando";
+    })
+}
+
 function getExchangeRate() {
     const amount = document.querySelector(".amount input"),
-        exchangeRateTxt = document.querySelector('.exchange-rate');
+        exchangeRateTxt = document.querySelector('.exchange-rate'),
+        exchangeRateTxt_2 = document.querySelector('.exchange-rate-2');
     let amountVal = amount.value;
     if (amountVal == "" || amountVal == "0") {
         amount.value = "1";
@@ -78,16 +92,27 @@ function getExchangeRate() {
 
     exchangeRateTxt.innerText = "Calculando el cambio ...";
     let exchangeRate = 1 / price_dollar;
+    let exchangeRate_2 = 1 / price_enparalelo;
     let totalExchangeRate;
-    if (fromCurrency.value == 'USD') {
+    let totalExchangeRate_2;
+    if (fromCurrency.value == 'REF') {
         totalExchangeRate = (amountVal / exchangeRate).toFixed(2);
+        totalExchangeRate_2 = (amountVal / exchangeRate_2).toFixed(2);
     } else {
         totalExchangeRate = (amountVal * exchangeRate).toFixed(2);
+        totalExchangeRate_2 = (amountVal * exchangeRate_2).toFixed(2);
     }
-    exchangeRateTxt.innerHTML = `Cambio total: <br/> ${amountVal} ${fromCurrency.value} = <input id='data' type='text' class='results' value='${totalExchangeRate}'> ${toCurrency.value} <button id='copy' class='copy-results'> Copiar resultado</button>`;
+    exchangeRateTxt.innerHTML = `Cambio total para BCV: <br/> ${amountVal} ${fromCurrency.value} = <input id='data' type='text' class='results' value='${totalExchangeRate}'> ${toCurrency.value} <button id='copy' class='copy-results'> Copiar resultado BCV</button>`;
+    exchangeRateTxt_2.innerHTML = `Cambio total para EnParalelo: <br/> ${amountVal} ${fromCurrency.value} = <input id='data-2' type='text' class='results' value='${totalExchangeRate_2}'> ${toCurrency.value} <button id='copy-2' class='copy-results-2'> Copiar resultado ENPARALELO</button>`;
+
     document.querySelector("#copy").addEventListener("click", e => {
         e.preventDefault();
         copy();
+    });
+
+    document.querySelector("#copy-2").addEventListener("click", e => {
+        e.preventDefault();
+        copy2();
     });
 
 }
@@ -97,6 +122,14 @@ function copy() {
     copyText.select();
     document.execCommand("copy");
     let advise = document.querySelector('.copy-results');
+    advise.innerHTML = 'Monto copiado exitosamente';
+}
+
+function copy2() {
+    let copyText = document.querySelector("#data-2");
+    copyText.select();
+    document.execCommand("copy");
+    let advise = document.querySelector('.copy-results-2');
     advise.innerHTML = 'Monto copiado exitosamente';
 }
 
@@ -110,3 +143,5 @@ if ("serviceWorker" in navigator) {
 }
 
 getDollar();
+
+getEnparalelo();

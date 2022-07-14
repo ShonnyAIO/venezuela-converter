@@ -10,13 +10,14 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <title>Convertidor de precios BSD a USD APP</title>
+    <title>Convertidor de precios Bolivares a Divisas APP</title>
 </head>
 <!-- Developer: Jonathan Torres -->
 
 <body class="fullscreen">
     <div class="wrapper">
-        <header>Convertidor de precios BSD a USD</header>
+        <header>Convertidor de precios Bolivares a Divisas</header>
+        <div class="precio-enparalelo"></div>
         <div class="precio-bcv"></div>
         <form action="#">
             <div class="amount">
@@ -30,7 +31,7 @@
                         <img src="https://www.worldometers.info/img/flags/ve-flag.gif" alt="flag">
                         <select>
                             <option value="BSD">BSD</option>
-                            <option value="USD">USD</option>
+                            <option value="REF">REF</option>
                         </select>
                     </div>
                 </div>
@@ -40,13 +41,16 @@
                     <div class="select-box">
                         <img src="https://www.worldometers.info/img/flags/us-flag.gif" alt="flag">
                         <select>
-                            <option value="USD">USD</option>
+                            <option value="REF">REF</option>
                             <option value="BSD">BSD</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="exchange-rate">
+                <p></p>
+            </div>
+            <div class="exchange-rate-2">
                 <p></p>
             </div>
             <button class="calculate">
