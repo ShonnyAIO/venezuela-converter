@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-    --color-default: #504de2;
+    --color-default: #333296;
 }
 
 
@@ -21,7 +21,7 @@ body {
 }
 
 .wrapper {
-    width: 370px;
+    width: 390px;
     background: #fff;
     padding: 30px;
     border-radius: 7px;
@@ -35,7 +35,10 @@ body {
 }
 
 .precio-bcv,
-.precio-enparalelo {
+.precio-enparalelo,
+.precio-euro,
+.precio-pesos {
+    text-align: center;
     margin-top: 5px;
     font-size: 16px;
     font-weight: 600;
@@ -47,7 +50,7 @@ body {
 }
 
 .wrapper form {
-    margin: 40px 0 20px 0;
+    margin: 20px 0 20px 0;
 }
 
 form :where(input, select, button) {

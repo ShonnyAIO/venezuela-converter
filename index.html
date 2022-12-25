@@ -10,15 +10,17 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <title>Convertidor de precios Bolivares a Divisas APP</title>
+    <title>Convertidor de precios Bolivares a Otras Monedas APP</title>
 </head>
 <!-- Developer: Jonathan Torres -->
 
 <body class="fullscreen">
     <div class="wrapper">
-        <header>Convertidor de precios Bolivares a Divisas</header>
+        <header>Convertidor de precios Bolivares a Otras Monedas</header>
         <div class="precio-enparalelo"></div>
+        <div class="precio-pesos"></div>
         <div class="precio-bcv"></div>
+        <div class="precio-euro"></div>
         <form action="#">
             <div class="amount">
                 <p>Ingrese el monto</p>
@@ -31,7 +33,9 @@
                         <img src="https://www.worldometers.info/img/flags/ve-flag.gif" alt="flag">
                         <select>
                             <option value="BSD">BSD</option>
+                            <option value="COP">COP</option>
                             <option value="REF">REF</option>
+                            <option value="EUR">EUR</option>
                         </select>
                     </div>
                 </div>
@@ -42,6 +46,8 @@
                         <img src="https://www.worldometers.info/img/flags/us-flag.gif" alt="flag">
                         <select>
                             <option value="REF">REF</option>
+                            <option value="EUR">EUR</option>
+                            <option value="COP">COP</option>
                             <option value="BSD">BSD</option>
                         </select>
                     </div>
