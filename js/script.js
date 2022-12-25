@@ -152,7 +152,7 @@ function getExchangeRate() {
             e.preventDefault();
             copy();
         });
-    } else {
+    } else if (toCurrency.value == 'COP') {
         let exchangeRate = 1 / price_pesos;
         let totalExchangeRate;
         if (fromCurrency.value == 'COP') {
