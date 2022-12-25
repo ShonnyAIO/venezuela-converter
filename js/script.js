@@ -112,7 +112,7 @@ function getExchangeRate() {
 
     console.log('LAS MONEDAS: ', fromCurrency.value, toCurrency.value);
 
-    if (toCurrency.value == 'REF') {
+    if (toCurrency.value == 'REF' || fromCurrency.value == 'REF') {
         let exchangeRate = 1 / price_dollar;
         let exchangeRate_2 = 1 / price_enparalelo;
         let totalExchangeRate;
@@ -137,7 +137,7 @@ function getExchangeRate() {
             copy2();
         });
 
-    } else if (toCurrency.value == 'EUR') {
+    } else if (toCurrency.value == 'EUR' || fromCurrency.value == 'EUR') {
         let exchangeRate = 1 / price_euro;
         let totalExchangeRate;
         if (fromCurrency.value == 'EUR') {
@@ -152,7 +152,7 @@ function getExchangeRate() {
             e.preventDefault();
             copy();
         });
-    } else if (toCurrency.value == 'COP') {
+    } else if (toCurrency.value == 'COP' || fromCurrency.value == 'COP') {
         let exchangeRate = 1 / price_pesos;
         let totalExchangeRate;
         if (fromCurrency.value == 'COP') {
