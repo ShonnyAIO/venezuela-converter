@@ -44,7 +44,7 @@ var price_euro = '';
 async function getDollar() {
     const dollar_html = document.querySelector('.precio-bcv');
     const euro_html = document.querySelector('.precio-euro');
-    let url = `http://localhost:3000/data-bcv`;
+    let url = `https://monitor-dollar-api.vercel.app/data-bcv`;
     await fetch(url).then(response => response.json()).then(result => {
         const fecha = new Date().toLocaleDateString();
         const hour = new Date().toLocaleTimeString('es-VE');
@@ -63,7 +63,7 @@ async function getDollar() {
 var price_enparalelo = '';
 async function getEnparalelo() {
     const enparalelo_html = document.querySelector('.precio-enparalelo');
-    let url = `http://localhost:3000/dollar-paralelo`;
+    let url = `https://monitor-dollar-api.vercel.app/dollar-paralelo`;
     await fetch(url).then(response => response.json()).then(result => {
         let precio = Number(result.precio);
         price_enparalelo = precio.toFixed(3);
@@ -76,7 +76,7 @@ async function getEnparalelo() {
 var price_pesos = '';
 async function getPesos() {
     const pesos_html = document.querySelector('.precio-pesos');
-    let url = `http://localhost:3000/pesos-colombianos`;
+    let url = `https://monitor-dollar-api.vercel.app/pesos-colombianos`;
     await fetch(url).then(response => response.json()).then(result => {
         let precio = Number(result.precio);
         price_pesos = precio.toFixed(3);
