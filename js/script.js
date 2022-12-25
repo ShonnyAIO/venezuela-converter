@@ -90,6 +90,11 @@ function getExchangeRate() {
     const amount = document.querySelector(".amount input"),
         exchangeRateTxt = document.querySelector('.exchange-rate'),
         exchangeRateTxt_2 = document.querySelector('.exchange-rate-2');
+
+    amount.innerHTML = '';
+    exchangeRateTxt.innerHTML = '';
+    exchangeRateTxt_2.innerHTML = '';
+
     let amountVal = amount.value;
     if (amountVal == "" || amountVal == "0") {
         amount.value = "1";
@@ -109,8 +114,6 @@ function getExchangeRate() {
     }
 
     exchangeRateTxt.innerText = "Calculando el cambio ...";
-
-    console.log('LAS MONEDAS: ', fromCurrency.value, toCurrency.value);
 
     if (toCurrency.value == 'REF' || fromCurrency.value == 'REF') {
         let exchangeRate = 1 / price_dollar;
