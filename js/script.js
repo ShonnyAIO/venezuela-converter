@@ -50,8 +50,6 @@ async function getDollar() {
         const hour = new Date().toLocaleTimeString('es-VE');
         let precio_dollar = Number(result.dollar);
         let precio_euro = Number(result.euro);
-        console.log('EURO: ', precio_euro);
-        console.log('DOLLAR: ', precio_dollar);
         price_dollar = precio_dollar.toFixed(2);
         price_euro = precio_euro.toFixed(2);
         getButton.innerText = "Calcular el cambio";
