@@ -50,11 +50,13 @@ async function getDollar() {
         const hour = new Date().toLocaleTimeString('es-VE');
         let precio_dollar = Number(result.dollar);
         let precio_euro = Number(result.euro);
-        price_dollar = precio_dollar.toFixed(3);
-        price_euro = precio_euro.toFixed(3);
+        console.log('EURO: ', precio_euro);
+        console.log('DOLLAR: ', precio_dollar);
+        price_dollar = precio_dollar.toFixed(2);
+        price_euro = precio_euro.toFixed(2);
         getButton.innerText = "Calcular el cambio";
-        dollar_html.innerHTML = `BCV 1€ = ${price_dollar} BSD`;
-        euro_html.innerHTML = `BCV 1$ = ${price_euro} BSD <br/> <span> Fecha: ${fecha} ${hour} </span>`;
+        dollar_html.innerHTML = `BCV 1$ = ${price_dollar} BSD`;
+        euro_html.innerHTML = `BCV 1€ = ${price_euro} BSD <br/> <span> Fecha: ${fecha} ${hour} </span>`;
     }).catch(() => {
         dollar_html.innerHTML = "Lo sentimos, la fuente de consulta no funciona";
     });
@@ -66,23 +68,10 @@ async function getEnparalelo() {
     let url = `https://monitor-dollar-api.vercel.app/dollar-paralelo`;
     await fetch(url).then(response => response.json()).then(result => {
         let precio = Number(result.precio);
-        price_enparalelo = precio.toFixed(3);
+        price_enparalelo = precio.toFixed(2);
         enparalelo_html.innerHTML = `EnParalelo 1$ = ${precio} BSD <br/>`;
     }).catch(() => {
         enparalelo_html.innerHTML = "Lo sentimos, la fuente de consulta no funciona";
-    })
-}
-
-var price_pesos = '';
-async function getPesos() {
-    const pesos_html = document.querySelector('.precio-pesos');
-    let url = `https://monitor-dollar-api.vercel.app/pesos-colombianos`;
-    await fetch(url).then(response => response.json()).then(result => {
-        let precio = Number(result.precio);
-        price_pesos = precio.toFixed(3);
-        pesos_html.innerHTML = `1COP = ${precio} BSD <br/>`;
-    }).catch(() => {
-        pesos_html.innerHTML = "Lo sentimos, la fuente de consulta no funciona";
     })
 }
 
@@ -121,11 +110,11 @@ function getExchangeRate() {
         let totalExchangeRate;
         let totalExchangeRate_2;
         if (fromCurrency.value == 'REF') {
-            totalExchangeRate = (amountVal / exchangeRate).toFixed(3);
-            totalExchangeRate_2 = (amountVal / exchangeRate_2).toFixed(3);
+            totalExchangeRate = (amountVal / exchangeRate).toFixed(2);
+            totalExchangeRate_2 = (amountVal / exchangeRate_2).toFixed(2);
         } else {
-            totalExchangeRate = (amountVal * exchangeRate).toFixed(3);
-            totalExchangeRate_2 = (amountVal * exchangeRate_2).toFixed(3);
+            totalExchangeRate = (amountVal * exchangeRate).toFixed(2);
+            totalExchangeRate_2 = (amountVal * exchangeRate_2).toFixed(2);
         }
         exchangeRateTxt.innerHTML = `Cambio total para BCV: <br/> ${amountVal} ${fromCurrency.value} = <input id='data' type='text' class='results' value='${totalExchangeRate}'> ${toCurrency.value} <button id='copy' class='copy-results'> Copiar resultado BCV</button>`;
         exchangeRateTxt_2.innerHTML = `Cambio total para EnParalelo: <br/> ${amountVal} ${fromCurrency.value} = <input id='data-2' type='text' class='results' value='${totalExchangeRate_2}'> ${toCurrency.value} <button id='copy-2' class='copy-results-2'> Copiar resultado ENPARALELO</button>`;
@@ -144,27 +133,12 @@ function getExchangeRate() {
         let exchangeRate = 1 / price_euro;
         let totalExchangeRate;
         if (fromCurrency.value == 'EUR') {
-            totalExchangeRate = (amountVal / exchangeRate).toFixed(3);
+            totalExchangeRate = (amountVal / exchangeRate).toFixed(2);
         } else {
-            totalExchangeRate = (amountVal * exchangeRate).toFixed(3);
+            totalExchangeRate = (amountVal * exchangeRate).toFixed(2);
         }
 
         exchangeRateTxt.innerHTML = `Cambio total para BCV: <br/> ${amountVal} ${fromCurrency.value} = <input id='data' type='text' class='results' value='${totalExchangeRate}'> ${toCurrency.value} <button id='copy' class='copy-results'> Copiar resultado Euro</button>`;
-
-        document.querySelector("#copy").addEventListener("click", e => {
-            e.preventDefault();
-            copy();
-        });
-    } else if (toCurrency.value == 'COP' || fromCurrency.value == 'COP') {
-        let exchangeRate = 1 / price_pesos;
-        let totalExchangeRate;
-        if (fromCurrency.value == 'COP') {
-            totalExchangeRate = (amountVal / exchangeRate).toFixed(3);
-        } else {
-            totalExchangeRate = (amountVal * exchangeRate).toFixed(3);
-        }
-
-        exchangeRateTxt.innerHTML = `Cambio total para COP: <br/> ${amountVal} ${fromCurrency.value} = <input id='data' type='text' class='results' value='${totalExchangeRate}'> ${toCurrency.value} <button id='copy' class='copy-results'> Copiar resultado Pesos</button>`;
 
         document.querySelector("#copy").addEventListener("click", e => {
             e.preventDefault();
@@ -200,7 +174,7 @@ if ("serviceWorker" in navigator) {
     })
 }
 
-getPesos();
+
 getEnparalelo();
 getDollar();
 
