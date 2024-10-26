@@ -44,7 +44,7 @@ var price_euro = '';
 async function getDollar() {
     const dollar_html = document.querySelector('.precio-bcv');
     const euro_html = document.querySelector('.precio-euro');
-    let url = `https://monitor-dollar-api.vercel.app/dollar-bcv`;
+    let url = `https://query-monitor-crud.vercel.app/prices-bcv`;
     await fetch(url).then(response => response.json()).then(result => {
         const fecha = new Date().toLocaleDateString();
         const hour = new Date().toLocaleTimeString('es-VE');
